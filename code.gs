@@ -159,6 +159,11 @@ function searchMembers(keyword) {
     const memberSheet = ss.getSheetByName('Members');
     const passSheet = ss.getSheetByName('Passes');
 
+    if (!memberSheet || !passSheet) {
+      console.error('필수 시트를 찾을 수 없습니다.');
+      return { success: false, error: '시트를 찾을 수 없습니다.' };
+    }
+
     const memberData = memberSheet.getDataRange().getValues();
     const passData = passSheet.getDataRange().getValues();
 

@@ -861,7 +861,8 @@ function searchMembers() {
         displaySearchResults(result.results);
       } else {
         console.error("searchMembers 응답 오류:", result);
-        showMessage('검색 실패: 서버에서 올바른 응답을 받지 못했습니다.', 'error');
+        const msg = result && result.error ? result.error : '서버에서 올바른 응답을 받지 못했습니다.';
+        showMessage('검색 실패: ' + msg, 'error');
       }
     })
     .withFailureHandler(function(error) {
